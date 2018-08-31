@@ -19,62 +19,41 @@ export class HomePage {
   }
 
   add() {
-    let addTodoAlert = this.alertController.create({
-        
-        message:"Successfully Added!",
-        buttons:[{
-            text:"OK"
-        }
-    ]
-    });
-    addTodoAlert.present()
     this.todos.push(this.todo);
-    this.todo = "";    
+    this.todo = "";
+    let alert = this.alertController.create({
+    title: 'Success!',
+    buttons: ['Dismiss']
+    });
+
+    alert.present();
+
 }
 
+
 delete(item) {
-    let delTodoAlert = this.alertController.create({
-        
-        message:"Successfully Deleted!",
-        buttons:[{
-            text:"OK"
-        }
-    ]
-    });
-    delTodoAlert.present()
     var index = this.todos.indexOf(item, 0);
     if (index > -1) {
         this.todos.splice(index, 1);
+
+        let alert = this.alertController.create({
+        title: 'Successfully Deleted!',
+        buttons: ['Dismiss']
+        });
+
+            alert.present();
+        }
+}
+
+ edit(item) {
+    var index = this.todos.indexOf(item, 0);
+        if (index > -1) {
+        this.todos.splice(index, 1);
+        this.todo = item;
     }
+        
+    
+}
 }
 
-edit(item){
-    var index = this.todos.indexOf(item,0)
-    let editTodoAlert = this.alertController.create({
-        title:"Edit Todo",
-        message:"Please Input!",
-        inputs:[
-        {
-            type:"text",
-            name:"editTodoInput",
-            placeholder:item,
-        }],
-        buttons:[
-        {
-        text:"Update",
-        handler:(inputData)=>{
-            let todoText;
-            todoText = inputData.editTodoInput;
-            this.todos.splice(index,1);
-            this.todos.push(todoText);    
-        }   
-        }],
-    });
-    editTodoAlert.present()
-    // if (index > -1){
-    //     this.todos.splice(index,1);
-    //     this.todo = item;
-    // }
-}
 
-}
