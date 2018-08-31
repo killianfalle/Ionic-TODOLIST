@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar color="danger">
+    <ion-navbar color="secondary">
         <ion-title class="tit">
             TODO LIST
         </ion-title>
@@ -8,16 +8,16 @@
 
 <ion-content>
     <ion-item>
-        <ion-input [(ngModel)]="todo" placeholder="Input TODO here. . . " type="text"></ion-input>
+        <ion-input [(ngModel)]="todo" placeholder="What to do kid?" type="text"></ion-input>
     </ion-item>
 
-    <button ion-button full (click)="add()">Add to List</button>
+    <button ion-button full (click)="add()">ADD</button>
 
     <ion-list>
-        <ion-item-sliding *ngFor="let todot of todos">
+        <ion-item-sliding *ngFor="let t of todos">
             <ion-item>
-                {{todot}}
-                  <button class="butt" ion-button color="danger" (click)="delete(t)">
+                {{t}}
+                  <button class="butt" ion-button color="danger" (click)="delete(t)">Delete
                     <ion-icon name="trash"></ion-icon>
                   </button>
 
